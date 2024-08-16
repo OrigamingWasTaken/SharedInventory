@@ -1,4 +1,4 @@
-# Sandstone pack template
+# SharedInventory
 This is a datapack that shares your inventory between team members.
 
 To join a team, run `/trigger join.<team name>`
