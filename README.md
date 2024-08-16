@@ -1,4 +1,12 @@
 # Sandstone pack template
+This is a datapack that shares your inventory between team members.
+
+To join a team, run `/trigger join.<team name>`
+
+To start, run `/function si:start`
+
+To stop, run `/function si:stop`
+
 
 [//]: # "If .disable is removed from .github/workflows/packbuild.yml.disable & the repo is published to GitHub."
 Generated pack is in `generated` branch.
