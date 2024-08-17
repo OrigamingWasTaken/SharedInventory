@@ -169,8 +169,10 @@ type TeamColor = (typeof TEAMS)[keyof typeof TEAMS];
 function copyInventoryFromTeam(team: TeamColor) {
 	const storage = `si:inventory_${team}`;
 	for (const slot of SLOTS) {
-		data.modify.block('0 300 0', 'container.0').set.from.storage(storage, slot);
-		raw(`item replace entity @s ${slot} from block 0 300 0 container.0`);
+		execute.in("overworld").run(()=>{
+			data.modify.block('0 300 0', 'container.0').set.from.storage(storage, slot);
+			raw(`item replace entity @s ${slot} from block 0 300 0 container.0`);
+		})
 	}
 }
 
@@ -241,6 +243,7 @@ for (const [name, color] of Object.entries(TEAMS)) {
 				.score('.main', 'si.running', 'matches', 1)
 				.as(`@a[tag=si.team.${color}]`)
 				.at('@s')
+				.in("overworld")
 				.run.functionCmd(`si:teams/${color}/sync`);
 			raw('item replace block 0 300 0 container.0 with air');
 		},
